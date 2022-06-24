@@ -1,6 +1,5 @@
-package com.example.criptoapp.ui.Screens
+package com.example.criptoapp.ui.screens.components
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
