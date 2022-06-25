@@ -34,17 +34,18 @@ fun CoinItem(
             .padding(8.dp),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-
-            AsyncImage(
-                model = ImageRequest.Builder(LocalContext.current)
-                    .data(coin.imageUrl)
-                    .crossfade(true)
-                    .build(),
-                contentDescription = coin.descripcion,
-                modifier = Modifier.clip(CircleShape)
-            )
-
-            Text(text = coin.descripcion)
+            Row{
+                AsyncImage(
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(coin.imageUrl)
+                        .crossfade(true)
+                        .build(),
+                    contentDescription = coin.descripcion,
+                    modifier = Modifier.clip(CircleShape)
+                )
+                Spacer(modifier = Modifier.width(10.dp))
+                Text(text = coin.descripcion)
+            }
 
             Text(
                 text = coin.valor,
