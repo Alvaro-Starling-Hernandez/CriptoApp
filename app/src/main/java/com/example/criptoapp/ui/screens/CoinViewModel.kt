@@ -9,6 +9,7 @@ import com.example.criptoapp.data.remote.CoinsRepository
 import com.example.criptoapp.util.Resource
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import javax.inject.Inject
