@@ -2,12 +2,19 @@ package com.example.criptoapp.ui.screens.components
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
 import com.example.criptoapp.data.remote.dto.CoinDto
 
 @Composable
@@ -17,34 +24,32 @@ fun CoinItem(
 ) {
     Card(
         shape = RoundedCornerShape(8.dp),
-        elevation = 1.dp,
+        elevation = 5.dp,
         modifier = Modifier
-            .padding(horizontal = 8.dp, vertical = 4.dp)
-            .fillMaxWidth(),
+            .padding(horizontal = 8.dp, vertical = 2.dp)
+            .fillMaxWidth()
     ) {
         Row(modifier = Modifier
             .clickable { onClick(coin) }
-            .padding(8.dp)
+            .padding(8.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
         ) {
-//            Image(
-//                modifier = Modifier.size(50.dp),
-//                painter = rememberImagePainter(
-//                    data = user.thumbnail,
-//                    builder = {
-//                        placeholder(R.drawable.placeholder)
-//                        error(R.drawable.placeholder)
-//                    }
-//                ),
-//                contentDescription = null,
-//                contentScale = ContentScale.FillHeight
-//            )
-            //Spacer(modifier = Modifier.width(100.dp))
 
-            Text(coin.description)
+            AsyncImage(
+                model = ImageRequest.Builder(LocalContext.current)
+                    .data(coin.imageUrl)
+                    .crossfade(true)
+                    .build(),
+                contentDescription = coin.descripcion,
+                modifier = Modifier.clip(CircleShape)
+            )
 
-            Spacer(modifier = Modifier.width(100.dp))
+            Text(text = coin.descripcion)
 
-            Text(text = coin.valor)
+            Text(
+                text = coin.valor,
+                textAlign = TextAlign.End
+            )
         }
 
     }

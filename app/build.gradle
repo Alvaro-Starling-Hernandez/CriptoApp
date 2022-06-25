@@ -77,6 +77,8 @@ dependencies {
 
     //Shimmer para efecto de carga
     implementation 'com.valentinilk.shimmer:compose-shimmer:1.0.0'
+    //Para manejar imagenes
+    implementation("io.coil-kt:coil-compose:2.1.0")
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
