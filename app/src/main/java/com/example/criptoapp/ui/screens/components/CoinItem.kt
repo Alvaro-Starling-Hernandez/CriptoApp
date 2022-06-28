@@ -36,14 +36,7 @@ fun CoinItem(
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             Row{
-                AsyncImage(
-                    model = ImageRequest.Builder(LocalContext.current)
-                        .data(coin.imageUrl)
-                        .crossfade(true)
-                        .build(),
-                    contentDescription = coin.descripcion,
-                    modifier = Modifier.clip(CircleShape)
-                )
+                Image(coin = coin)
                 Spacer(modifier = Modifier.width(15.dp))
                 Text(text = coin.descripcion)
             }

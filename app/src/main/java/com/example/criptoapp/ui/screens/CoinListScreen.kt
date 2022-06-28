@@ -84,21 +84,9 @@ fun CoinListScreen(
             }
 
             if (state.isLoading) {
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
-                LoadingCards()
+                for(n in 1..15){
+                    LoadingCards()
+                }
             }
         }
     }
