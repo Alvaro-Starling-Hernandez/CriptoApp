@@ -1,8 +1,6 @@
 package com.example.criptoapp.ui.screens
 
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.State
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.*
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.criptoapp.data.remote.CoinsRepository
@@ -20,6 +18,9 @@ class CoinViewModel @Inject constructor(
 ) : ViewModel() {
     private val _state = mutableStateOf(CoinListState())
     val state: State<CoinListState> = _state
+
+    var name by mutableStateOf("")
+    var price by mutableStateOf("")
 
     init {
         coinsRepository.getCoins().onEach { result ->
