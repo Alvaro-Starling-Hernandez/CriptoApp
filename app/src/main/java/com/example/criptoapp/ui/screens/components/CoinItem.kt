@@ -47,7 +47,7 @@ fun CoinItem(
             }
             val decimalFormat = DecimalFormat("#,###.######")
             Text(
-                text = "$ " + decimalFormat.format(coin.valor.toDouble()),
+                text = "$ " + decimalFormat.format(coin.valor),
                 textAlign = TextAlign.End,
                 fontWeight = FontWeight.Normal,
                 letterSpacing = 3.sp,

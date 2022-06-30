@@ -1,8 +1,8 @@
 package com.example.criptoapp.data.remote.dto
 
 data class CoinDto(
-    val monedaId: String = "",
+    val monedaId: Int = 0,
     val descripcion: String = "",
-    val valor: String = "",
+    val valor: Double = 0.0,
     val imageUrl: String = "",
 )
