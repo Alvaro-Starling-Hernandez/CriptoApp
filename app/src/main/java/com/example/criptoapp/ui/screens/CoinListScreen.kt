@@ -24,6 +24,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.ViewModel
+import androidx.navigation.NavHostController
+import com.example.criptoapp.ui.navigation.Screens
 import com.example.criptoapp.ui.screens.CoinViewModel
 import com.example.criptoapp.ui.screens.components.CoinItem
 import com.example.criptoapp.ui.screens.components.LoadingCards
@@ -32,6 +34,7 @@ import com.valentinilk.shimmer.shimmer
 
 @Composable
 fun CoinListScreen(
+    navHostController: NavHostController,
     viewModel: CoinViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
@@ -67,7 +70,18 @@ fun CoinListScreen(
                     }
                 }
             )
-        }
+        },
+        floatingActionButton = {
+
+            FloatingActionButton(
+                onClick = { navHostController.navigate(Screens.RegisterCoinScreen.route)}
+            ) {
+                Icon(imageVector = Icons.Default.Add, contentDescription = null)
+            }
+
+        },
+        floatingActionButtonPosition = FabPosition.End
+
 
     ) {
         Column(
