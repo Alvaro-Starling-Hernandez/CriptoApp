@@ -1,6 +1,7 @@
 package com.example.criptoapp.ui.screens
 
 import android.sax.RootElement
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment.Companion.TopCenter
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
@@ -38,7 +40,7 @@ fun CoinListScreen(
     viewModel: CoinViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
-
+    val context = LocalContext.current
 
     Scaffold(
 
@@ -102,6 +104,8 @@ fun CoinListScreen(
                     LoadingCards()
                 }
             }
+
+
         }
     }
 }

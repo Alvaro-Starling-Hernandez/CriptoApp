@@ -1,16 +1,13 @@
 package com.example.criptoapp.ui.screens
 
-import android.widget.Toast
-import androidx.compose.material.Snackbar
 import androidx.compose.runtime.*
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.criptoapp.data.remote.CoinsRepository
 import com.example.criptoapp.data.remote.dto.CoinDto
 import com.example.criptoapp.util.Resource
-import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -23,9 +20,11 @@ class CoinViewModel @Inject constructor(
 ) : ViewModel() {
     private val _state = mutableStateOf(CoinListState())
     val state: State<CoinListState> = _state
+    var message by mutableStateOf("")
 
     var name by mutableStateOf("")
     var price by mutableStateOf("")
+
 
     init {
         coinsRepository.getCoins().onEach { result ->
@@ -44,8 +43,8 @@ class CoinViewModel @Inject constructor(
     }
 
     fun setCoin() {
-        viewModelScope.launch {
-            coinsRepository.setCoin(
+         viewModelScope.launch {
+             coinsRepository.setCoin(
                 CoinDto(
                     descripcion = name,
                     valor = price.toDouble()
