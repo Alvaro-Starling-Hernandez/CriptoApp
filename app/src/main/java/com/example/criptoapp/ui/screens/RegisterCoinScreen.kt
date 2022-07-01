@@ -119,7 +119,7 @@ fun RegisterCoinScreen(
                     if (!nameError && !priceError) {
                         if (viewModel.price.toDouble() > 0) {
                             viewModel.setCoin()
-                            navHostController.navigateUp()
+                            navHostController.popBackStack()
                         } else {
                             Toast.makeText(
                                 context,
