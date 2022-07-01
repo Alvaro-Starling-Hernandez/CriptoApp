@@ -118,7 +118,7 @@ fun RegisterCoinScreen(
                     priceError = viewModel.price.isBlank()
                     if (!nameError && !priceError) {
                         if (viewModel.price.toDouble() > 0) {
-                            //Hacer post
+                            viewModel.setCoin()
                             navHostController.navigateUp()
                         } else {
                             Toast.makeText(

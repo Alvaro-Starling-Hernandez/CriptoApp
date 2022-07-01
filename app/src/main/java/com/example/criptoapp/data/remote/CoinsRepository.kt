@@ -25,4 +25,16 @@ class CoinsRepository @Inject constructor(
             emit(Resource.Error(e.message ?: "Verificar la conexion a internet"))
         }
     }
+
+    suspend fun setCoin(coinDto: CoinDto): Resource<Unit>{
+        val response = try {
+            api.setCoin(coinDto)
+        } catch (e: HttpException) {
+            return (Resource.Error(e.message ?: "Error HTTP general"))
+        } catch (e: IOException) {
+            return (Resource.Error(e.message ?: "Verificar la conexion a internet"))
+        }
+
+        return Resource.Success(data = response)
+    }
 }

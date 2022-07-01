@@ -1,15 +1,20 @@
 package com.example.criptoapp.ui.screens
 
+import android.widget.Toast
+import androidx.compose.material.Snackbar
 import androidx.compose.runtime.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.criptoapp.data.remote.CoinsRepository
+import com.example.criptoapp.data.remote.dto.CoinDto
 import com.example.criptoapp.util.Resource
 import dagger.hilt.android.HiltAndroidApp
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -36,5 +41,16 @@ class CoinViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    fun setCoin() {
+        viewModelScope.launch {
+            coinsRepository.setCoin(
+                CoinDto(
+                    descripcion = name,
+                    valor = price.toDouble()
+                )
+            )
+        }
     }
 }
