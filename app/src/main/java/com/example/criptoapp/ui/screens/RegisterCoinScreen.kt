@@ -45,7 +45,7 @@ fun RegisterCoinScreen(
                         imageVector = Icons.Default.ArrowBack,
                         contentDescription = "ArrowBack",
                         modifier = Modifier.clickable {
-                            navHostController.navigateUp()
+                            navHostController.navigate(Screens.CoinListScreen.route)
                         }
                     )
                 }
