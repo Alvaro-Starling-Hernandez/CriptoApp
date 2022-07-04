@@ -11,9 +11,11 @@ import com.example.criptoapp.data.remote.dto.CoinDto
 
 @Composable
 fun Image(coin: CoinDto) {
+    val sinImagen =
+        "https://i-invdn-com.investing.com/ico_flags/80x80/v32/bitcoin-cash.png"
     AsyncImage(
         model = ImageRequest.Builder(LocalContext.current)
-            .data(coin.imageUrl)
+            .data(if (coin.imageUrl == "") sinImagen else coin.imageUrl)
             .crossfade(true)
             .build(),
         contentDescription = coin.descripcion,

@@ -20,6 +20,7 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
+import com.example.criptoapp.ui.navigation.Screens
 import com.example.criptoapp.ui.screens.components.TextObligatorio
 
 @Composable
@@ -119,7 +120,12 @@ fun RegisterCoinScreen(
                     if (!nameError && !priceError) {
                         if (viewModel.price.toDouble() > 0) {
                             viewModel.setCoin()
-                            navHostController.popBackStack()
+                            Toast.makeText(
+                                context,
+                                "Save",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            navHostController.navigate(Screens.CoinListScreen.route)
                         } else {
                             Toast.makeText(
                                 context,
