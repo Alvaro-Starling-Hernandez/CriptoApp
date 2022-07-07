@@ -52,4 +52,13 @@ class CoinViewModel @Inject constructor(
             )
         }
     }
+
+    fun isNumber(text: String): Boolean{
+        return try {
+            text.toDouble()
+            true
+        }catch (e: NumberFormatException){
+            false
+        }
+    }
 }

@@ -118,7 +118,7 @@ fun RegisterCoinScreen(
                     nameError = viewModel.name.isBlank()
                     priceError = viewModel.price.isBlank()
                     if (!nameError && !priceError) {
-                        if (viewModel.price.toDouble() > 0) {
+                        if (viewModel.isNumber(viewModel.price) && viewModel.price.toDouble() > 0) {
                             viewModel.setCoin()
                             Toast.makeText(
                                 context,
